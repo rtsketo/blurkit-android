@@ -1,23 +1,21 @@
 plugins {
     id 'com.android.library'
-    id 'com.github.dcendents.android-maven' version '1.5'
+    id 'maven-publish'
 }
 
 ext {
     PUBLISH_GROUP_ID = 'io.alterac.blurkit'
     PUBLISH_ARTIFACT_ID = 'blurkit'
-    PUBLISH_VERSION = '1.1.0'
+    PUBLISH_VERSION = '1.1.1'
 }
 
 android {
     compileSdkVersion versions.compileSdk
-    buildToolsVersion '28.0.3'
+    namespace "io.alterac.blurkit"
 
     defaultConfig {
         minSdkVersion versions.minSdk
         targetSdkVersion versions.targetSdk
-        versionCode 1
-        versionName "1.1.0"
         renderscriptTargetApi 28
         renderscriptSupportModeEnabled true
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
