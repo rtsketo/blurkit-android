@@ -23,6 +23,11 @@ android {
     testOptions {
         unitTests.returnDefaultValues = true
     }
+
+    publishing {
+        singleVariant("release") { }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -41,14 +46,15 @@ dependencies {
 
 }
 
-install {
-    repositories.mavenInstaller {
-        pom.project {
-            groupId project.group
-            artifactId 'blurkit'
-            packaging 'aar'
+afterEvaluate {
+    publishing {
+        publications {
+            create('release', MavenPublication) {
+                groupId     = PUBLISH_GROUP_ID
+                artifactId  = PUBLISH_ARTIFACT_ID
+                version     = PUBLISH_VERSION
+                from        components.release
+            }
         }
     }
 }
-
-apply from : 'deploy.gradle'
